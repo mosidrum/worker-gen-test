@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .flex {
+    @apply flex;
+  }
+
+  .sidebar-header-text {
+    @apply text-primary text-lg font-bold;
+  }
+
+  .sidebar-child-text {
+    @apply text-primary text-lg;
+  }
+
+  .card {
+    @apply p-4 border rounded-md shadow-md bg-background;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
