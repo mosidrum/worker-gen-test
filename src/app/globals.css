@@ -3,12 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-  .flex {
-    @apply flex;
-  }
-
   .sidebar-header-text {
-    @apply text-primary text-lg font-bold;
+    @apply text-primary text-sm font-bold;
   }
 
   .sidebar-child-text {
@@ -21,14 +17,14 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e3e3e3;
+  --foreground: #111111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #e3e3e3;
+    --foreground: #000000;
   }
 }
 
@@ -36,4 +32,39 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "left main right";
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 230px 1fr 80px;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.left-sidebar {
+  grid-area: left;
+  background-color: #f6f6f6;
+  padding: 4px;
+  border-right: 2px solid red;
+  overflow-y: auto;
+}
+
+.main-content {
+  grid-area: main;
+  background-color: #e3e3e3;
+}
+
+.right-sidebar {
+  grid-area: right;
+  background-color: #e9ecef;
 }

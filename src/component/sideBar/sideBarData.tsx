@@ -6,14 +6,29 @@ import {
   MdOutlineCropPortrait,
   MdOutlineEventNote,
 } from "react-icons/md";
-import { IoIosRocket } from "react-icons/io";
+import { IoIosRocket, IoIosTimer } from "react-icons/io";
 import { TfiWrite, TfiNotepad } from "react-icons/tfi";
 import { LuUserRound } from "react-icons/lu";
 import { BiNotepad } from "react-icons/bi";
-import { RiProductHuntLine } from "react-icons/ri";
+import { RiProductHuntLine, RiPushpinLine } from "react-icons/ri";
 import { PiBuildingOffice } from "react-icons/pi";
 import { SiMarketo, SiQuicktime } from "react-icons/si";
-import {} from "react-icons/si";
+import { IoHomeOutline } from "react-icons/io5";
+
+export const home = [
+  {
+    title: "Home",
+    icon: <IoHomeOutline />,
+  },
+  {
+    title: "Recent",
+    icon: <IoIosTimer />,
+  },
+  {
+    title: "Pinned",
+    icon: <RiPushpinLine />,
+  },
+];
 
 export const myWork = [
   {
