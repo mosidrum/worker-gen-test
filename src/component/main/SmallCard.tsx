@@ -19,7 +19,7 @@ export const SmallCard = ({
   values,
 }: SmallCardProps) => {
   return (
-    <div className="flex flex-col w-full sm:w-[300px] md:w-[350px] lg:w-[400px] p-4 sm:p-5 shadow-custom-layered rounded-2xl relative hover:cursor-pointer">
+    <div className="flex flex-col w-full sm:w-fit md:w-[350px] lg:w-[400px] p-4 sm:p-5 shadow-custom-layered rounded-2xl relative hover:cursor-pointer">
       <div className="flex items-center space-x-3">
         {image && (
           <Image
