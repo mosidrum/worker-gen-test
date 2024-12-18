@@ -13,6 +13,7 @@ import TablePagination from "@mui/material/TablePagination";
 import { users } from "@/utils";
 import copilot from "../../../public/copilot-icon.png";
 import Image from "next/image";
+import { IoIosArrowDown } from "react-icons/io";
 
 export const DataTable = () => {
   const [selected, setSelected] = useState<string[]>([]);
@@ -88,10 +89,26 @@ export const DataTable = () => {
                     onChange={(e) => handleSelectAllClick(e.target.checked)}
                   />
                 </TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Topic</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Created On</TableCell>
+                <TableCell>
+                  <div className="flex items-center">
+                    Name <IoIosArrowDown className="ml-2 text-gray-500" />
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center">
+                    Topic <IoIosArrowDown className="ml-2 text-gray-500" />
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center">
+                    Status <IoIosArrowDown className="ml-2 text-gray-500" />
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center">
+                    Created On <IoIosArrowDown className="ml-2 text-gray-500" />
+                  </div>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
