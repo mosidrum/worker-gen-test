@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   DataTable,
   Header,
@@ -8,22 +11,28 @@ import {
 } from "@/component";
 
 export default function Home() {
+  const [hasSidebar, setHasSidebar] = useState(false);
+
   return (
-    <div className="grid-container">
+    <>
       <header className="header">
         <Header />
       </header>
-      <aside className="left-sidebar">
-        <SideBar />
-      </aside>
-      <main className="main-content">
-        <SubHeader />
-        <MainBanner />
-        <DataTable />
-      </main>
-      <aside className="right-sidebar">
-        <RightSideBar />
-      </aside>
-    </div>
+      <div className={`grid-container ${!hasSidebar ? "no-sidebar" : ""}`}>
+        {hasSidebar && (
+          <aside className="left-sidebar">
+            <SideBar />
+          </aside>
+        )}
+        <main className="main-content">
+          <SubHeader />
+          <MainBanner />
+          <DataTable />
+        </main>
+        <aside className="right-sidebar">
+          <RightSideBar />
+        </aside>
+      </div>
+    </>
   );
 }
