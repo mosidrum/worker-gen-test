@@ -18,13 +18,13 @@
 
 :root {
   --background: #e3e3e3;
-  --foreground: #111111;
+  --foreground: #f5f2f2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #e3e3e3;
-    --foreground: #000000;
+    --foreground: #313131;
   }
 }
 
@@ -40,7 +40,7 @@ body {
     "header header header"
     "left main right";
   grid-template-rows: 50px 1fr;
-  grid-template-columns: 230px 1fr 80px;
+  grid-template-columns: 230px 1fr 50px;
   height: 100vh;
 }
 
@@ -55,7 +55,7 @@ body {
   grid-area: left;
   background-color: #f6f6f6;
   padding: 4px;
-  border-right: 2px solid red;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   overflow-y: auto;
 }
 

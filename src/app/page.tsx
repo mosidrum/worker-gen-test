@@ -1,4 +1,4 @@
-import { Header, SideBar } from "@/component";
+import { Header, RightSideBar, SideBar } from "@/component";
 
 export default function Home() {
   return (
@@ -10,7 +10,9 @@ export default function Home() {
         <SideBar />
       </aside>
       <main className="main-content">Main Content</main>
-      <aside className="right-sidebar">Right Sidebar</aside>
+      <aside className="right-sidebar">
+        <RightSideBar />
+      </aside>
     </div>
   );
 }
