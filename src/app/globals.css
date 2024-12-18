@@ -7,6 +7,10 @@
     @apply text-primary text-sm font-bold;
   }
 
+  .header-text {
+    @apply text-[16px] font-bold text-black;
+  }
+
   .sidebar-child-text {
     @apply text-primary text-lg;
   }

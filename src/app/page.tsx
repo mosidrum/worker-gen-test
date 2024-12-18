@@ -1,6 +1,7 @@
 import {
   DataTable,
   Header,
+  MainBanner,
   RightSideBar,
   SideBar,
   SubHeader,
@@ -17,6 +18,7 @@ export default function Home() {
       </aside>
       <main className="main-content">
         <SubHeader />
+        <MainBanner />
         <DataTable />
       </main>
       <aside className="right-sidebar">
