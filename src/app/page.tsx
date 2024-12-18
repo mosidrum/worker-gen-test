@@ -1,4 +1,10 @@
-import { Header, RightSideBar, SideBar, SubHeader } from "@/component";
+import {
+  DataTable,
+  Header,
+  RightSideBar,
+  SideBar,
+  SubHeader,
+} from "@/component";
 
 export default function Home() {
   return (
@@ -11,6 +17,7 @@ export default function Home() {
       </aside>
       <main className="main-content">
         <SubHeader />
+        <DataTable />
       </main>
       <aside className="right-sidebar">
         <RightSideBar />
