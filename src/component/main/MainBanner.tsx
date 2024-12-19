@@ -13,6 +13,7 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 export const MainBanner = () => {
   const [isRoles, setIsRoles] = useState(true);
+
   return (
     <div className="bg-white m-3 py-5 px-10 rounded-md shadow-custom-heavy relative">
       {isRoles && (

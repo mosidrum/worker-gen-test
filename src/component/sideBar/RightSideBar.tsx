@@ -7,9 +7,9 @@ import { FiPhone } from "react-icons/fi";
 const icons = [MdOutlineMailOutline, TfiComments, FiPhone, GoComment];
 const SIZE = 20;
 
-export const RightSideBar = () => {
+export const RightSidebar = () => {
   return (
-    <div className="flex flex-col items-center pt-2 gap-5">
+    <div className="hidden md:flex flex-col items-center pt-2 gap-5 w-[50px] min-h-screen bg-muted">
       {icons.map((IconElement, index) => (
         <IconElement key={index} size={SIZE} />
       ))}

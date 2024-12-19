@@ -16,25 +16,23 @@ const rightIcons = [
   PiUserList,
 ];
 
-export const Header = () => {
-  return (
-    <div className="w-full bg-header text-white flex justify-between items-center p-4">
-      <div className="flex gap-5 items-center justify-center">
-        <div>
-          <PiDotsNineBold size={30} />
-        </div>
-        <div className="flex items-center gap-3">
-          <span>Dynamics 365</span>
-          <span>|</span>
-          <span className="text-sm">Sales hub</span>
-        </div>
+export const Header = () => (
+  <div className="w-full bg-header text-white flex justify-between items-center p-4">
+    <div className="flex gap-5 items-center justify-center">
+      <div>
+        <PiDotsNineBold size={30} />
       </div>
-      <div className="flex items-center gap-5">
-        {rightIcons.map((IconComponent, index) => (
-          <IconComponent key={index} size={18} />
-        ))}
-        <Image src={profile} alt="Profile" className="w-7 h-7" />
+      <div className="flex items-center gap-3">
+        <span>Dynamics 365</span>
+        <span>|</span>
+        <span className="text-sm">Sales hub</span>
       </div>
     </div>
-  );
-};
+    <div className="flex items-center gap-5">
+      {rightIcons.map((IconComponent, index) => (
+        <IconComponent key={index} size={18} />
+      ))}
+      <Image src={profile} alt="Profile" className="w-7 h-7" />
+    </div>
+  </div>
+);

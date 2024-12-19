@@ -6,6 +6,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import { headerList } from "./headerList";
 
+type SubHeaderProps = {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export type HeaderListProps = {
   label: string;
   leftIcon: ReactNode;
@@ -33,12 +38,19 @@ const HeaderList = ({
   </div>
 );
 
-export const SubHeader = () => {
+export const SubHeader = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+}: SubHeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="flex justify-between items-center bg-white m-2 p-2 rounded-md shadow-custom-light">
       <div className="flex items-center gap-3">
+        <RxHamburgerMenu
+          className="cursor-pointer text-xl"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        />
         <div className="text-sm">My Open Leads</div>
         <IoIosArrowDown />
       </div>
