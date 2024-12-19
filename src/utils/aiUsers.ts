@@ -14,7 +14,6 @@ export const aiUsers = [
     values: [
       "Decision Maker",
       "Visionary Leader",
-      "Expert Strategist",
       "Change Driver",
     ],
     qualities: [
@@ -37,7 +36,6 @@ export const aiUsers = [
       "Expert Marketer",
       "Brand Builder",
       "Creative Thinker",
-      "Data-Driven Strategist",
     ],
     qualities: [
       "Liam specializes in crafting impactful marketing campaigns that deliver measurable results.",
@@ -58,7 +56,6 @@ export const aiUsers = [
     values: [
       "Innovative Thinker",
       "Problem Solver",
-      "Tech Enthusiast",
       "Team Mentor",
     ],
     qualities: [
@@ -79,7 +76,6 @@ export const aiUsers = [
       "Analyze quarterly sales data and strategize on improving client retention rates during tomorrow's leadership meeting.",
     values: [
       "Sales Strategist",
-      "Client Relationship Builder",
       "Data-Driven Leader",
       "Growth Enabler",
     ],
@@ -103,7 +99,6 @@ export const aiUsers = [
       "Operational Expert",
       "Team Leader",
       "Efficiency Maximizer",
-      "Innovative Thinker",
     ],
     qualities: [
       "Ava is a seasoned operations professional with a knack for identifying inefficiencies.",

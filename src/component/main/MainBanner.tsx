@@ -68,6 +68,7 @@ export const MainBanner = () => {
                   title={user.title}
                   name={user.name}
                   image={user.image}
+                  about={user.about}
                   quality={user.qualities}
                   values={user.values}
                 />

@@ -7,6 +7,7 @@ import { Modal } from "../modal";
 export interface SmallCardProps {
   name: string;
   title: string;
+  about: string;
   image: StaticImageData;
   quality: string[];
   values: string[];
@@ -17,6 +18,7 @@ export const SmallCard = ({
   title,
   image,
   quality,
+  about,
   values,
 }: SmallCardProps) => {
   const [showModal, setShowModal] = useState(false);
@@ -24,8 +26,8 @@ export const SmallCard = ({
 
   const handleMouseEnter = () => {
     const timeout = setTimeout(() => {
-      setShowModal(true);
-    }, 3000);
+      setShowModal(!showModal);
+    }, 2000);
     setModalTimeout(timeout);
   };
 
@@ -33,7 +35,7 @@ export const SmallCard = ({
     if (modalTimeout) {
       clearTimeout(modalTimeout);
     }
-    setShowModal(false);
+    setShowModal(!showModal);
   };
 
   return (
@@ -80,18 +82,22 @@ export const SmallCard = ({
           <p className="truncate">{values?.[1] || null}</p>
         </div>
       </div>
-
-      {/* Modal */}
       {showModal && (
-        <Modal
-          title={title}
-          quality={quality}
-          values={values}
-          image={image}
-          name={name}
-          setShowModal={setShowModal}
-          showModal={showModal}
-        />
+        <div
+          className=" inset-0 flex items-center justify-center z-50 bg-opacity-50"
+          onClick={() => setShowModal(!showModal)}
+        >
+          <Modal
+            title={title}
+            quality={quality}
+            values={values}
+            image={image}
+            name={name}
+            about={about}
+            setShowModal={setShowModal}
+            showModal={showModal}
+          />
+        </div>
       )}
     </div>
   );
