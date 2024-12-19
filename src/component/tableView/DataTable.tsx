@@ -19,10 +19,11 @@ export const DataTable = () => {
   const [selected, setSelected] = useState<string[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSelectAllClick = (checked: boolean) => {
     if (checked) {
-      const currentRows = users.slice(
+      const currentRows = filteredUsers.slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage
       );
@@ -53,7 +54,20 @@ export const DataTable = () => {
     setPage(0);
   };
 
-  const paginatedRows = users.slice(
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    setPage(0); // Reset to first page when searching
+  };
+
+  // Filter users based on search term
+  const filteredUsers = users.filter((user) =>
+    [user.name, user.topic, user.status]
+      .join(" ") // Combine fields into a single string
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
+  const paginatedRows = filteredUsers.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
@@ -64,6 +78,8 @@ export const DataTable = () => {
         <input
           className="outline-none w-full tex-sm"
           placeholder="Sort, filter and search with Copilot"
+          value={searchTerm}
+          onChange={handleSearchChange}
         />
         <Image src={copilot} alt="microsoft copilot" className="w-6 h-6" />
       </div>
@@ -76,11 +92,7 @@ export const DataTable = () => {
                   <Checkbox
                     indeterminate={
                       selected.length > 0 &&
-                      selected.length <
-                        users.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        ).length
+                      selected.length < paginatedRows.length
                     }
                     checked={
                       paginatedRows.length > 0 &&
@@ -112,33 +124,45 @@ export const DataTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {paginatedRows.map((user) => (
-                <TableRow
-                  key={user.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={isChecked(user.name)}
-                      onChange={() => handleCheckboxChange(user.name)}
-                      inputProps={{
-                        "aria-label": `select ${user.name}`,
-                      }}
-                    />
+              {paginatedRows.length > 0 ? (
+                paginatedRows.map((user) => (
+                  <TableRow
+                    key={user.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={isChecked(user.name)}
+                        onChange={() => handleCheckboxChange(user.name)}
+                        inputProps={{
+                          "aria-label": `select ${user.name}`,
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell className="text-blue-500">{user.name}</TableCell>
+                    <TableCell>{user.topic}</TableCell>
+                    <TableCell>{user.status}</TableCell>
+                    <TableCell>{user.createdOn}</TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={5}
+                    align="center"
+                    className="text-gray-500"
+                  >
+                    No results found
                   </TableCell>
-                  <TableCell className="text-blue-500">{user.name}</TableCell>
-                  <TableCell>{user.topic}</TableCell>
-                  <TableCell>{user.status}</TableCell>
-                  <TableCell>{user.createdOn}</TableCell>
                 </TableRow>
-              ))}
+              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[]}
+          rowsPerPageOptions={[5, 10, 15]}
           component="div"
-          count={users.length}
+          count={filteredUsers.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
