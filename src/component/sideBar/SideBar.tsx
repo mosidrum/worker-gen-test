@@ -19,7 +19,7 @@ type SidebarProps = {
 };
 
 export const SideBar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => (
-  <div className="flex flex-col py-2 gap-5 w-[200px] h-screen overflow-y-auto">
+  <div className="flex flex-col px-2 py-2 gap-5 w-[200px] h-screen overflow-y-auto border-r-2 border-gray-200">
     <div>
       <div className=" flex items-center justify-between px-2">
         {isSidebarOpen ? (
