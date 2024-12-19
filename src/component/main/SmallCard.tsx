@@ -25,17 +25,20 @@ export const SmallCard = ({
   const [modalTimeout, setModalTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
-    const timeout = setTimeout(() => {
-      setShowModal(!showModal);
-    }, 2000);
-    setModalTimeout(timeout);
+    if (!showModal) {
+      const timeout = setTimeout(() => {
+        setShowModal(true);
+      }, 3000); // Wait for 3 seconds
+      setModalTimeout(timeout);
+    }
   };
 
   const handleMouseLeave = () => {
     if (modalTimeout) {
       clearTimeout(modalTimeout);
+      setModalTimeout(null);
     }
-    setShowModal(!showModal);
+    // Do not reset showModal state when the mouse leaves
   };
 
   return (
@@ -85,7 +88,7 @@ export const SmallCard = ({
       {showModal && (
         <div
           className=" inset-0 flex items-center justify-center z-50 bg-opacity-50"
-          onClick={() => setShowModal(!showModal)}
+          onClick={() => setShowModal(false)} // Allow modal to close when clicked
         >
           <Modal
             title={title}

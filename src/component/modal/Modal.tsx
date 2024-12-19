@@ -3,7 +3,6 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { SmallCardProps } from "../main/SmallCard";
 import Image from "next/image";
 import { FaRegEnvelope } from "react-icons/fa6";
-import { BsStars } from "react-icons/bs";
 import Card from "./card";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoPencil } from "react-icons/go";
@@ -24,11 +23,24 @@ export const Modal = ({
   about,
   image,
   setShowModal,
-  showModal,
 }: ModalProps) => {
+  const handleBackdropClick = () => {
+    setShowModal(false);
+  };
+
+  const handleContentClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="bg-white flex flex-col space-y-3 p-6 rounded-lg w-3/5 shadow-custom-light2 relative">
+    <div
+      className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50"
+      onClick={handleBackdropClick}
+    >
+      <div
+        className="bg-white flex flex-col space-y-3 p-6 rounded-lg w-3/5 shadow-custom-light2 relative"
+        onClick={handleContentClick}
+      >
         <div className="flex items-center justify-between my-5">
           <div className="flex items-center space-x-2">
             <FaRegEnvelope size={20} className="text-blue-400" />
@@ -36,7 +48,11 @@ export const Modal = ({
               Engage with {name}
             </span>
           </div>
-          <LiaTimesSolid size={24} onClick={() => setShowModal(!showModal)} />
+          <LiaTimesSolid
+            size={24}
+            className="cursor-pointer"
+            onClick={() => setShowModal(false)} // Close modal on "X" icon click
+          />
         </div>
 
         <div className="flex w-full border items-center space-x-3 shadow-custom-light rounded-lg p-3">
@@ -58,10 +74,6 @@ export const Modal = ({
         <div className="flex flex-col shadow-custom-light rounded-lg p-3">
           <div className="flex items-center justify-between bg-indigo-50 rounded-lg p-3">
             <div className="flex space-x-1">
-              <BsStars
-                size={28}
-                className="absolute text-blue-600 bg-white rounded-bl-xl -top-1 right-0 p-1"
-              />
               <div className="bg-gradient-blue-purple bg-clip-text text-transparent text-sm">
                 {quality?.[0]}
               </div>

@@ -5,11 +5,11 @@ import { Segments } from "./Segments";
 import copilot from "../../../public/copilot-icon.png";
 import Image from "next/image";
 import { Stats } from "./Stats";
-import { SmallCard } from "./SmallCard";
 import { aiUsers } from "@/utils/aiUsers";
 import { Features } from "./Features";
 import { featureItems } from "@/utils/feautureItems";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { CardContainer } from "./CardContainer";
 
 export const MainBanner = () => {
   const [isRoles, setIsRoles] = useState(true);
@@ -62,17 +62,7 @@ export const MainBanner = () => {
               intent and are actively engaging. These leads need your focus.
             </div>
             <div className="flex flex-wrap gap-6">
-              {aiUsers.slice(0, 2).map((user, index) => (
-                <SmallCard
-                  key={index}
-                  title={user.title}
-                  name={user.name}
-                  image={user.image}
-                  about={user.about}
-                  quality={user.qualities}
-                  values={user.values}
-                />
-              ))}
+              <CardContainer aiUsers={aiUsers} />
             </div>
           </div>
           <div className="w-full md:w-auto md:pl-14 md:border-l-2 flex flex-col space-y-4">

@@ -1,21 +1,29 @@
+import { StaticImageData } from "next/image";
 import one from "../../public/assets/user1.jpg";
 import two from "../../public/assets/user2.jpg";
 import three from "../../public/assets/user3.jpg";
 import four from "../../public/assets/user4.jpg";
 import five from "../../public/assets/user5.jpg";
 
-export const aiUsers = [
+export type AIUser = {
+  id: number;
+  name: string;
+  title: string;
+  currentTask: string;
+  values: string[];
+  qualities: string[];
+  about: string;
+  image: StaticImageData;
+};
+
+export const aiUsers: AIUser[] = [
   {
     id: 1,
     name: "Sophia Martinez",
     title: "CEO, Meta Foundation International",
     currentTask:
       "Prepare for a high-volume sales intent meeting on Zoom by 2 PM regarding upgrading the service contract.",
-    values: [
-      "Decision Maker",
-      "Visionary Leader",
-      "Change Driver",
-    ],
+    values: ["Decision Maker", "Visionary Leader", "Change Driver"],
     qualities: [
       "Sophia has a proven track record of transforming organizations into market leaders.",
       "She excels in developing strategic partnerships and driving innovation.",
@@ -32,11 +40,7 @@ export const aiUsers = [
     title: "Chief Marketing Officer, BrightWave Technologies",
     currentTask:
       "Draft a comprehensive marketing campaign strategy for a product launch in Q1 2025.",
-    values: [
-      "Expert Marketer",
-      "Brand Builder",
-      "Creative Thinker",
-    ],
+    values: ["Expert Marketer", "Brand Builder", "Creative Thinker"],
     qualities: [
       "Liam specializes in crafting impactful marketing campaigns that deliver measurable results.",
       "He has a unique ability to merge creativity with data to drive brand growth.",
@@ -53,11 +57,7 @@ export const aiUsers = [
     title: "Lead Engineer, Nexus Robotics",
     currentTask:
       "Conduct system diagnostics and prepare a presentation on integrating AI with robotic systems for the board meeting.",
-    values: [
-      "Innovative Thinker",
-      "Problem Solver",
-      "Team Mentor",
-    ],
+    values: ["Innovative Thinker", "Problem Solver", "Team Mentor"],
     qualities: [
       "Olivia is renowned for her ability to simplify complex engineering problems.",
       "She consistently delivers innovative solutions that drive technological advancement.",
@@ -74,11 +74,7 @@ export const aiUsers = [
     title: "Head of Sales, Quantum Innovations",
     currentTask:
       "Analyze quarterly sales data and strategize on improving client retention rates during tomorrow's leadership meeting.",
-    values: [
-      "Sales Strategist",
-      "Data-Driven Leader",
-      "Growth Enabler",
-    ],
+    values: ["Sales Strategist", "Data-Driven Leader", "Growth Enabler"],
     qualities: [
       "Ethan has a deep understanding of market dynamics and client psychology.",
       "His leadership has consistently driven record-breaking revenue growth.",
@@ -95,11 +91,7 @@ export const aiUsers = [
     title: "COO, Stellar Health Systems",
     currentTask:
       "Oversee the implementation of a new healthcare operations system to streamline workflows and improve patient outcomes.",
-    values: [
-      "Operational Expert",
-      "Team Leader",
-      "Efficiency Maximizer",
-    ],
+    values: ["Operational Expert", "Team Leader", "Efficiency Maximizer"],
     qualities: [
       "Ava is a seasoned operations professional with a knack for identifying inefficiencies.",
       "She excels in leading cross-functional teams to execute complex projects seamlessly.",
