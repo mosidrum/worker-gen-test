@@ -13,7 +13,7 @@ type SubHeaderProps = {
 
 export type HeaderListProps = {
   label: string;
-  leftIcon: ReactNode;
+  leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   extraIcon?: ReactNode;
   hasBorder?: boolean;
