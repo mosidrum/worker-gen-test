@@ -10,32 +10,25 @@ import { VscSend } from "react-icons/vsc";
 import { BsArrowRight } from "react-icons/bs";
 import { BsArrowLeft } from "react-icons/bs";
 import { aiUsers } from "@/utils/aiUsers";
+import { Tooltip } from "@mui/material";
 
 interface ModalProps extends SmallCardProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Modal = ({ id, setShowModal }: ModalProps) => {
+export const Modal = ({ id, setShowModal, showModal }: ModalProps) => {
   const [currentId, setCurrentId] = useState<number>(id);
   const currentUser = aiUsers.find((user) => user.id === currentId);
-
-  const handleBackdropClick = () => {
-    setShowModal(false);
-  };
-
-  const handleContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
 
   return (
     <div
       className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50"
-      onClick={handleBackdropClick}
+      onClick={() => setShowModal(!showModal)}
     >
       <div
         className="bg-white flex flex-col space-y-3 px-10 py-5 rounded-lg w-11/12 sm:w-4/6 shadow-custom-light2 relative max-h-[80vh] sm:max-h-[92vh] overflow-y-auto"
-        onClick={handleContentClick}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between my-5">
           <div className="flex items-center space-x-2">
@@ -44,11 +37,13 @@ export const Modal = ({ id, setShowModal }: ModalProps) => {
               Engage with {currentUser?.name}
             </span>
           </div>
-          <LiaTimesSolid
-            size={24}
-            className="cursor-pointer"
-            onClick={() => setShowModal(false)}
-          />
+          <Tooltip title="Click to close modal" followCursor>
+            <LiaTimesSolid
+              size={24}
+              className="cursor-pointer"
+              onClick={() => setShowModal(false)}
+            />
+          </Tooltip>
         </div>
 
         <div className="flex w-full border items-center space-x-3 shadow-custom-light rounded-lg p-3">
@@ -56,7 +51,7 @@ export const Modal = ({ id, setShowModal }: ModalProps) => {
             <Image
               src={currentUser?.image}
               alt={currentUser?.name || "User image"}
-              className="w-10 h-10 rounded-full"
+              className="w-10 h-10 rounded-full object-cover"
               width={40}
               height={40}
             />
@@ -79,11 +74,11 @@ export const Modal = ({ id, setShowModal }: ModalProps) => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="flex space-x-1 py-2 px-3 rounded-lg items-center hover:cursor-pointer borde bg-white">
+              <div className="flex space-x-1 py-2 px-5 rounded-lg items-center hover:cursor-pointer borde bg-white">
                 <GoPencil size={16} color="black" />
                 <span className="text-xs ">Edit</span>
               </div>
-              <div className="flex space-x-1 py-2 px-3 rounded-lg items-center hover:cursor-pointer border bg-gradient-blue-purple text-white">
+              <div className="flex space-x-1 py-2 px-5 rounded-lg items-center hover:cursor-pointer border bg-gradient-blue-purple text-white">
                 <VscSend size={16} />
                 <span className="text-xs">Approve and send</span>
               </div>
@@ -124,7 +119,9 @@ export const Modal = ({ id, setShowModal }: ModalProps) => {
             </div>
             <IoIosArrowDown size={20} />
           </div>
-          <div className="text-xs sm:text-sm text-gray-500">{currentUser?.about}</div>
+          <div className="text-xs sm:text-sm text-gray-500">
+            {currentUser?.about}
+          </div>
         </div>
 
         {currentUser?.id !== aiUsers.length && (

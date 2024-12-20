@@ -15,9 +15,16 @@ export const MainBanner = () => {
   const [isRoles, setIsRoles] = useState(true);
 
   return (
-    <div className="bg-white m-3 py-5 px-10 rounded-md shadow-custom-heavy relative">
+    <div className="bg-white w-full my-3 py-5 px-4 md:px-10 rounded-md shadow-custom-heavy">
+      <div className="flex items-end justify-end hover:cursor-pointer mb-3 ">
+        {isRoles ? (
+          <IoIosArrowDown size={24} onClick={() => setIsRoles(!isRoles)} />
+        ) : (
+          <IoIosArrowUp size={24} onClick={() => setIsRoles(!isRoles)} />
+        )}
+      </div>
       {isRoles && (
-        <div className="flex flex-wrap justify-between items-center">
+        <div className="flex flex-wrap justify-between items-center space-y-4 xl:space-y-0">
           <div className="flex items-center space-x-2 header-text">
             <Image src={copilot} alt="copilot logo" className="w-6 h-6" />
             <div className="text-sm sm:text-base">
@@ -39,21 +46,6 @@ export const MainBanner = () => {
           </div>
         </div>
       )}
-      <div className="py-2">
-        {isRoles ? (
-          <IoIosArrowDown
-            size={30}
-            className="absolute right-6 top-1"
-            onClick={() => setIsRoles(!isRoles)}
-          />
-        ) : (
-          <IoIosArrowUp
-            size={30}
-            className="absolute right-6 top-1"
-            onClick={() => setIsRoles(!isRoles)}
-          />
-        )}
-      </div>
       {isRoles && (
         <div className="mt-6 flex flex-col justify-center md:flex-row">
           <div className="flex-1 mb-6 md:mb-0 md:pr-4">

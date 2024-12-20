@@ -24,38 +24,16 @@ export const SmallCard = ({
   values,
 }: SmallCardProps) => {
   const [showModal, setShowModal] = useState(false);
-  const [modalTimeout, setModalTimeout] = useState<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = () => {
-    if (!showModal) {
-      const timeout = setTimeout(() => {
-        setShowModal(true);
-      }, 2000);
-      setModalTimeout(timeout);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (modalTimeout) {
-      clearTimeout(modalTimeout);
-      setModalTimeout(null);
-    }
-  };
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Card */}
+    <div className="relative" onClick={() => setShowModal(!showModal)}>
       <div className="flex flex-col w-full sm:w-fit md:w-[350px] lg:w-[400px] p-4 sm:p-5 shadow-custom-layered rounded-2xl relative hover:cursor-pointer">
         <div className="flex items-center space-x-3">
           {image && (
             <Image
               src={image}
               alt={name || "User image"}
-              className="w-10 h-10 rounded-full"
+              className="w-10 h-10 rounded-full object-cover"
               width={40}
               height={40}
             />

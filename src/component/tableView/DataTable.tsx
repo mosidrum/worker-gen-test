@@ -74,7 +74,7 @@ export const DataTable = () => {
 
   return (
     <div className="flex flex-col justify-between items-start bg-white m-2 px-2 py-4 rounded-md shadow-custom-light">
-      <div className="flex justify-between border rounded-md border-gray-500 py-1 my-6 px-2 w-1/3">
+      <div className="flex justify-between border rounded-md border-gray-500 py-1 my-6 px-2 w-full md:w-1/3">
         <input
           className="outline-none w-full tex-sm"
           placeholder="Sort, filter and search with Copilot"

@@ -37,7 +37,7 @@ export default function Home() {
             />
           </div>
 
-          <main className="p-6 md:pl-6 min-h-screen bg-white">
+          <main className=" p-2 pl-0 md:p-6 md:pl-6 min-h-screen bg-white">
             <SubHeader
               isSidebarOpen={isSidebarOpen}
               setIsSidebarOpen={setIsSidebarOpen}

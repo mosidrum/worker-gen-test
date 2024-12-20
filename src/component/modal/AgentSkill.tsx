@@ -9,6 +9,7 @@ import { BsSignTurnRight } from "react-icons/bs";
 import outlook from "../../../public/outlook.webp";
 import copilot from "../../../public/copilot-icon.png";
 import Image from "next/image";
+import Tooltip from "@mui/material/Tooltip";
 
 type AgenSkillProps = {
   onClose: () => void;
@@ -31,13 +32,15 @@ export const AgenSkill = ({ onClose }: AgenSkillProps) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50 backdrop-blur-sm">
-      <div className="bg-white p-6 rounded-lg w-3/4 shadow-custom-light max-w-4xl">
+      <div className="bg-white p-6 rounded-lg w-11/12 md:w-3/4 shadow-custom-light max-w-4xl">
         <div className="flex flex-col space-y-6">
-          <LiaTimesSolid
-            size={24}
-            className="cursor-pointer ml-auto"
-            onClick={onClose}
-          />
+          <Tooltip title="Click to close modal" followCursor>
+            <LiaTimesSolid
+              size={24}
+              className="cursor-pointer ml-auto"
+              onClick={onClose}
+            />
+          </Tooltip>
           <div className="flex items-center space-x-1">
             <Image src={copilot} alt="copilot" className="h-4 w-4" />
             <span className="text-base font-semibold">Agent Skill</span>
@@ -45,8 +48,8 @@ export const AgenSkill = ({ onClose }: AgenSkillProps) => {
           <div className="shadow-custom-light p-6 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="font-semibold">
-                Check if on-hand inventry will all sales orders to ship without
-                delay
+                Check if on-hand inventory will allow all sales orders to ship
+                without delay
               </div>
 
               {shouldOpen ? (
@@ -68,11 +71,11 @@ export const AgenSkill = ({ onClose }: AgenSkillProps) => {
                 <span>When</span> <Span icon={FaRegUser} item="any vendor" />
                 <span>sends an email with changes to</span>
                 <Span icon={FiFileText} item="confirm purchase orders" />
-                <span> , check if the resulting</span>
+                <span>, check if the resulting</span>
                 <Span icon={HiOutlineMenuAlt2} item="on-hand inventory" />
                 <span>will allow</span>
                 <Span icon={MdOutlineFileCopy} item="all sales orders" />
-                <span> to</span>
+                <span>to</span>
                 <Span icon={BsSignTurnRight} item="ship without delay" />
                 <span>. If so,</span>
                 <Span icon={BsSignTurnRight} item="update the purchase order" />
@@ -86,12 +89,12 @@ export const AgenSkill = ({ onClose }: AgenSkillProps) => {
               <div className="text-base font-semibold">Enable Email access</div>
             </div>
             <div>
-              Allow the agent to access email inboxes to read mail from know
+              Allow the agent to access email inboxes to read mail from known
               vendors
             </div>
-            <div className="flex justify-between">
-              <div className="flex justify-start items-center border rounded-lg w-3/6 md:w-5/6">
-                <div className="flex w-auto items-center space-x-1 text-gray-500 bg-gray-200 rounded-xl">
+            <div className="flex flex-col md:flex-row justify-between space-x-3 space-y-3 md:space-y-0">
+              <div className="flex justify-start items-center border rounded-lg w-full md:w-5/6 p-1">
+                <div className="flex w-auto items-center space-x-1 text-gray-500 bg-gray-200 rounded-xl p-1">
                   <span className="bg-orange-200 rounded-full w-8 h-8 flex items-center justify-center">
                     P
                   </span>
@@ -100,16 +103,21 @@ export const AgenSkill = ({ onClose }: AgenSkillProps) => {
                   <span className="px-1">X</span>
                 </div>
               </div>
-              <div className=" rounded-md py-2 px-6 bg-blue-500 text-white">
-                Allow acess
+              <div className="rounded-md hover:cursor-pointer text-sm flex items-center justify-center py-2 px-6 bg-blue-500 text-white text-center">
+                Allow access
               </div>
             </div>
           </div>
-          <div className="flex justify-end space-x-3 items-center ml-auto">
-            <div className="border rounded-md px-4 py-2 cursor-not-allowed bg-gray-300 text-gray-400">
-              Activate
-            </div>
-            <div className="border rounded-md px-4 py-2 cursor-pointer">
+          <div className="flex justify-end space-x-3 items-center mt-3 md:mt-0">
+            <Tooltip title="You don't have permission to do this" followCursor>
+              <div className="border rounded-md px-4 py-2 cursor-not-allowed bg-gray-300 text-gray-400">
+                Activate
+              </div>
+            </Tooltip>
+            <div
+              className="border rounded-md px-4 py-2 cursor-pointer"
+              onClick={onClose}
+            >
               Close
             </div>
           </div>
