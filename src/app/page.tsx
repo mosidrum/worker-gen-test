@@ -5,8 +5,7 @@ import {
   AgenSkill,
   DataTable,
   Header,
-  MainBanner,
-  RightSidebar,
+  MainBanner, RightSidebar,
   SideBar,
   SubHeader,
 } from "@/component";
