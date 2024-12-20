@@ -1,29 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { LiaTimesSolid } from "react-icons/lia";
 import { SmallCardProps } from "../main/SmallCard";
 import Image from "next/image";
 import { FaRegEnvelope } from "react-icons/fa6";
-import Card from "./card";
+import { Card } from "./card";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoPencil } from "react-icons/go";
 import { VscSend } from "react-icons/vsc";
 import { BsArrowRight } from "react-icons/bs";
 import { BsArrowLeft } from "react-icons/bs";
+import { aiUsers } from "@/utils/aiUsers";
 
 interface ModalProps extends SmallCardProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Modal = ({
-  name,
-  title,
-  quality,
-  values,
-  about,
-  image,
-  setShowModal,
-}: ModalProps) => {
+export const Modal = ({ id, setShowModal }: ModalProps) => {
+  const [currentId, setCurrentId] = useState<number>(id);
+  const currentUser = aiUsers.find((user) => user.id === currentId);
+
+
   const handleBackdropClick = () => {
     setShowModal(false);
   };
@@ -45,7 +42,7 @@ export const Modal = ({
           <div className="flex items-center space-x-2">
             <FaRegEnvelope size={20} className="text-blue-400" />
             <span className="text-md font-bold truncate">
-              Engage with {name}
+              Engage with {currentUser?.name}
             </span>
           </div>
           <LiaTimesSolid
@@ -56,18 +53,22 @@ export const Modal = ({
         </div>
 
         <div className="flex w-full border items-center space-x-3 shadow-custom-light rounded-lg p-3">
-          {image && (
+          {currentUser?.image && (
             <Image
-              src={image}
-              alt={name || "User image"}
+              src={currentUser?.image}
+              alt={currentUser?.name || "User image"}
               className="w-10 h-10 rounded-full"
               width={40}
               height={40}
             />
           )}
           <div>
-            <div className="text-sm font-bold truncate">{name}</div>
-            <div className="text-xs text-gray-500 truncate">{title}</div>
+            <div className="text-sm font-bold truncate">
+              {currentUser?.name}
+            </div>
+            <div className="text-xs text-gray-500 truncate">
+              {currentUser?.title}
+            </div>
           </div>
         </div>
 
@@ -75,7 +76,7 @@ export const Modal = ({
           <div className="flex items-center justify-between bg-indigo-50 rounded-lg p-3">
             <div className="flex space-x-1">
               <div className="bg-gradient-blue-purple bg-clip-text text-transparent text-sm">
-                {quality?.[0]}
+                {currentUser?.qualities?.[0]}
               </div>
             </div>
             <div className="flex space-x-2">
@@ -105,13 +106,13 @@ export const Modal = ({
               <div className="text-sm font-bold bg-gradient-blue-purple bg-clip-text text-transparent">
                 Why I chose this lead
               </div>
-              {quality.map((item, index) => (
+              {currentUser?.qualities.map((item, index) => (
                 <li className="font-xs" key={index}>
                   {item}
                 </li>
               ))}
               <div>
-                <Card qualities={values} />
+                <Card qualities={currentUser?.values} />
               </div>
             </div>
           </div>
@@ -119,19 +120,31 @@ export const Modal = ({
 
         <div className="rounded-lg shadow-custom-light p-2 sm:p-4">
           <div className="flex items-center justify-between">
-            <div className="font-bold text-sm sm:text-base">About {name}</div>
+            <div className="font-bold text-sm sm:text-base">
+              About {currentUser?.name}
+            </div>
             <IoIosArrowDown size={20} />
           </div>
-          <div className="text-xs sm:text-sm">{about}</div>
+          <div className="text-xs sm:text-sm">{currentUser?.about}</div>
         </div>
 
-        <div className="absolute border rounded-full bg-white top-1/2 -right-6 transform -translate-y-1/2 p-2 sm:p-3 cursor-pointer">
-          <BsArrowRight size={20} />
-        </div>
+        {currentUser?.id !== aiUsers.length && (
+          <div className="absolute border rounded-full bg-gradient-blue-purple text-white top-1/2 -right-6 transform -translate-y-1/2 p-2 sm:p-3 cursor-pointer">
+            <BsArrowRight
+              size={20}
+              onClick={() => setCurrentId(currentId + 1)}
+            />
+          </div>
+        )}
 
-        <div className="absolute border rounded-full bg-white top-1/2 -left-6 transform -translate-y-1/2 p-2 sm:p-3 cursor-pointer">
-          <BsArrowLeft size={20} />
-        </div>
+        {currentUser?.id !== 1 && (
+          <div className="absolute border rounded-full bg-gradient-blue-purple text-white top-1/2 -left-6 transform -translate-y-1/2 p-2 sm:p-3 cursor-pointer">
+            <BsArrowLeft
+              size={20}
+              onClick={() => setCurrentId(currentId - 1)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

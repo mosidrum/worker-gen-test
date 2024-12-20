@@ -32,6 +32,7 @@ export const CardContainer = ({ aiUsers }: CardContainerProps) => {
       <div className="flex flex-wrap gap-6">
         {currentItems.map((user, index) => (
           <SmallCard
+            id={user.id}
             key={index}
             title={user.title}
             name={user.name}

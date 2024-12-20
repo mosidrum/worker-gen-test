@@ -5,6 +5,7 @@ import { BsStars } from "react-icons/bs";
 import { Modal } from "../modal";
 
 export interface SmallCardProps {
+  id: number;
   name: string;
   title: string;
   about: string;
@@ -14,6 +15,7 @@ export interface SmallCardProps {
 }
 
 export const SmallCard = ({
+  id,
   name,
   title,
   image,
@@ -28,7 +30,7 @@ export const SmallCard = ({
     if (!showModal) {
       const timeout = setTimeout(() => {
         setShowModal(true);
-      }, 3000); // Wait for 3 seconds
+      }, 2000);
       setModalTimeout(timeout);
     }
   };
@@ -38,7 +40,6 @@ export const SmallCard = ({
       clearTimeout(modalTimeout);
       setModalTimeout(null);
     }
-    // Do not reset showModal state when the mouse leaves
   };
 
   return (
@@ -88,7 +89,7 @@ export const SmallCard = ({
       {showModal && (
         <div
           className=" inset-0 flex items-center justify-center z-50 bg-opacity-50"
-          onClick={() => setShowModal(false)} // Allow modal to close when clicked
+          onClick={() => setShowModal(false)}
         >
           <Modal
             title={title}
@@ -99,6 +100,7 @@ export const SmallCard = ({
             about={about}
             setShowModal={setShowModal}
             showModal={showModal}
+            id={id}
           />
         </div>
       )}

@@ -5,23 +5,23 @@ import champion from "../../../public/champion.webp";
 import high from "../../../public/growth.png";
 
 interface CardProps {
-  qualities: string[];
+  qualities?: string[];
 }
 
-const Card: React.FC<CardProps> = ({ qualities }) => {
+export const Card: React.FC<CardProps> = ({ qualities }) => {
   const items = [
     {
-      label: qualities[0],
+      label: qualities?.[0],
       image: yes,
       type: "Yes",
     },
     {
-      label: qualities[1],
+      label: qualities?.[1],
       image: champion,
       type: "$1M",
     },
     {
-      label: qualities[2],
+      label: qualities?.[2],
       image: high,
       type: "High",
     },
@@ -51,5 +51,3 @@ const Card: React.FC<CardProps> = ({ qualities }) => {
     </div>
   );
 };
-
-export default Card;
