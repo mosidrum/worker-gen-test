@@ -5,8 +5,9 @@ import {
   AgenSkill,
   DataTable,
   Header,
-  MainBanner, RightSidebar,
+  MainBanner,
   SideBar,
+  SideBar2,
   SubHeader,
 } from "@/component";
 
@@ -45,7 +46,7 @@ export default function Home() {
             <DataTable />
           </main>
 
-          <RightSidebar />
+          <SideBar2 />
         </div>
       </div>
       {hasOpen && <AgenSkill onClose={() => setHasOpen(!hasOpen)} />}
