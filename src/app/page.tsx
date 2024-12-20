@@ -13,7 +13,7 @@ import {
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [hasOpen, setHasOpen] = useState<boolean>(true);
+  const [hasOpen, setHasOpen] = useState<boolean>(false);
 
   return (
     <>

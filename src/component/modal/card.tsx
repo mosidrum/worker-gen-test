@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({ qualities }) => {
   ];
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-col md:flex-row ">
       {items.map((item, index) => (
         <div
           key={index}
