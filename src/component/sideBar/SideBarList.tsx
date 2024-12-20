@@ -4,15 +4,17 @@ type SideBarListProps = {
   title?: string;
   leftIcon: ReactNode;
   rightIcon?: ReactNode;
+  onClickList?: () => void;
 };
 
 export const SideBarList = ({
   leftIcon,
   title,
   rightIcon,
+  onClickList,
 }: SideBarListProps) => {
   return (
-    <div>
+    <div onClick={onClickList} className="hover:cursor-pointer">
       <div className="hover:bg-white py-1">
         <div className="flex items-center justify-between px-2 py-1 hover:border-l-4 hover:border-blue-500 hover:cursor-pointer">
           <div className="flex items-center gap-3">

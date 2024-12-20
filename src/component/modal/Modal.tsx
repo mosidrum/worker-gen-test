@@ -48,7 +48,7 @@ export const Modal = ({ id, setShowModal }: ModalProps) => {
           <LiaTimesSolid
             size={24}
             className="cursor-pointer"
-            onClick={() => setShowModal(false)} // Close modal on "X" icon click
+            onClick={() => setShowModal(false)}
           />
         </div>
 

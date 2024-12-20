@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  AgenSkill,
   DataTable,
   Header,
   MainBanner,
@@ -11,7 +12,8 @@ import {
 } from "@/component";
 
 export default function Home() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [hasOpen, setHasOpen] = useState<boolean>(true);
 
   return (
     <>
@@ -31,6 +33,7 @@ export default function Home() {
             <SideBar
               isSidebarOpen={isSidebarOpen}
               setIsSidebarOpen={setIsSidebarOpen}
+              onClickAgentSkill={() => setHasOpen((prev) => !prev)}
             />
           </div>
 
@@ -46,6 +49,7 @@ export default function Home() {
           <RightSidebar />
         </div>
       </div>
+      {hasOpen && <AgenSkill onClose={() => setHasOpen(!hasOpen)} />}
     </>
   );
 }
